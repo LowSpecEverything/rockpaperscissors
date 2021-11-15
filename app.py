@@ -23,9 +23,8 @@ def pc_choose():
     rock.config(state=DISABLED)
     paper.config(state=DISABLED)
     scissors.config(state=DISABLED)
-    pc_choice = "".join(random.choices(possible, k=1))
-    print(pc_choice)
-    try: compare()
+    pc_choice = random.choice(possible)
+    try: compare();print(pc_choice)
     except NameError:
         scr.config(text='Please choose an option')
         time.sleep(1)
@@ -47,6 +46,9 @@ def compare():
     log.setdefault(now,[choice,pc_choice,text])
 
 def reset():
+    global choice
+    try:del choice
+    except:pass
     send.config(text='Start',command=pc_choose)
     scr.config(text='Choose a button')
     rock.config(state=NORMAL)
@@ -68,4 +70,4 @@ send.grid(row=2,column=0,columnspan=3)
 if __name__ == '__main__':
     root.mainloop()
     with open('./log.json','w') as f:
-        f.write(str(log).replace('\'','"'))
+        f.write(str(log).replace('\'','"').replace('], ','],\n  '))
