@@ -3,6 +3,7 @@ from tkinter import *
 
 root = Tk()
 root.title = 'Rock/paper/scissors'
+root.config(padx=100,pady=100)
 
 scr = Label(root, text='Welcome to the game!')
 
@@ -24,7 +25,11 @@ def pc_choose():
     scissors.config(state=DISABLED)
     pc_choice = "".join(random.choices(possible, k=1))
     print(pc_choice)
-    compare()
+    try: compare()
+    except NameError:
+        scr.config(text='Please choose an option')
+        time.sleep(1)
+        reset()
 
 def compare():
     global scr
@@ -52,7 +57,7 @@ rock = Button(root, padx=10, pady=10, command=lambda: choose("rock"), text='Rock
 paper = Button(root, padx=10, pady=10, command=lambda: choose("paper"), text='Paper')
 scissors = Button(root, padx=10, pady=10, command=lambda: choose("scissors"), text='Scissors')
 
-send = Button (root, padx=30, command=pc_choose, text='Start!')
+send = Button (root, padx=80, command=pc_choose, text='Start!')
 
 scr.grid(row=0,column=0, columnspan=3)
 rock.grid(row=1,column=0)
