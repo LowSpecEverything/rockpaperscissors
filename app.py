@@ -12,14 +12,16 @@ log = {}
 
 def choose(input):
     global scr,choice
-    scr.grid_forget()
-    scr = Label(root, text='Choosing')
-    scr.grid(row=0,column=0, columnspan=3)
     choice = input
-    pc_choose()
+    scr.config(text=f'Your choice is: {choice}')
+    
 
 def pc_choose():
     global pc_choice
+    scr.config(text='Computer is choosing...')
+    rock.config(state=DISABLED)
+    paper.config(state=DISABLED)
+    scissors.config(state=DISABLED)
     pc_choice = "".join(random.choices(possible, k=1))
     print(pc_choice)
     compare()
@@ -36,7 +38,15 @@ def compare():
         text = "You win!"
     now = time.strftime("%d/%m/%Y %H:%M:%S")
     scr.config(text=text)
+    send.config(text='Again', command=reset)
     log.setdefault(now,[choice,pc_choice,text])
+
+def reset():
+    send.config(text='Start',command=pc_choose)
+    scr.config(text='Choose a button')
+    rock.config(state=NORMAL)
+    paper.config(state=NORMAL)
+    scissors.config(state=NORMAL)
 
 rock = Button(root, padx=10, pady=10, command=lambda: choose("rock"), text='Rock')
 paper = Button(root, padx=10, pady=10, command=lambda: choose("paper"), text='Paper')
