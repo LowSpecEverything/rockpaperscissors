@@ -2,12 +2,12 @@ import random, time
 from tkinter import *
 
 root = Tk()
-root.title = 'Rock/paper/scissors'
-root.config(padx=100,pady=100)
+root.title = 'Rock/Paper/Scissors'
+root.config(padx=50,pady=50)
 
 scr = Label(root, text='Welcome to the game!')
 
-possible = ["rock","paper","scissors"]
+possible = ["Rock","Paper","Scissors"]
 
 log = {}
 
@@ -36,7 +36,7 @@ def compare():
         text = "Tied!"
     elif possible.index(pc_choice) > possible.index(choice):
         text = "You lose!"
-    elif pc_choice == "rock" and choice == 'scissors':
+    elif pc_choice == "Rock" and choice == 'Scissors':
         text = "You lose!"
     else:
         text = "You win!"
@@ -55,9 +55,9 @@ def reset():
     paper.config(state=NORMAL)
     scissors.config(state=NORMAL)
 
-rock = Button(root, padx=10, pady=10, command=lambda: choose("rock"), text='Rock')
-paper = Button(root, padx=10, pady=10, command=lambda: choose("paper"), text='Paper')
-scissors = Button(root, padx=10, pady=10, command=lambda: choose("scissors"), text='Scissors')
+rock = Button(root, padx=10, pady=10, command=lambda: choose("Rock"), text='Rock')
+paper = Button(root, padx=10, pady=10, command=lambda: choose("Paper"), text='Paper')
+scissors = Button(root, padx=10, pady=10, command=lambda: choose("Scissors"), text='Scissors')
 
 send = Button (root, padx=80, command=pc_choose, text='Start!')
 

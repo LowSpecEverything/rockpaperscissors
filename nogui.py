@@ -1,5 +1,7 @@
 import time, random
+from os import system
 
+intro = 'Welcome to the game!'
 possible = ["Rock","Paper","Scissors"]
 log = {}
 
@@ -7,13 +9,15 @@ def reset():
     global choice
     for n,choice in enumerate(possible):
         print(f'{n+1} - {choice}')
-    try: choice = possible[int(input('Your choice (1-3): ')) - 1]
+    try: choice = possible[int(input('Your choice (1-3)(Use Ctrl+C to exit): ')) - 1]
     except IndexError: 
         print('Invalid choice')
         reset()
     except ValueError:
         print('Invalid choice')
         reset()
+    finally:system('clear')
+
 def compare():
     pc_choice = random.choice(possible)
     if pc_choice == choice:
@@ -29,6 +33,7 @@ def compare():
     log.setdefault(now,[choice,pc_choice,text])
 
 if __name__ == "__main__":
+    print(intro)
     while True:
         try:
             reset()
