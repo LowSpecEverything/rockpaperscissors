@@ -1,3 +1,6 @@
+# This is a CLI version of the program found in app.py
+# However, it uses a completely different base.
+
 import time, random
 from os import system
 
@@ -18,6 +21,7 @@ def reset():
         reset()
     finally:system('clear')
 
+# Compare the choices of the computer and the player (why are they both strings?)
 def compare():
     pc_choice = random.choice(possible)
     if pc_choice == choice:
