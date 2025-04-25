@@ -49,7 +49,7 @@ def reset():
     global choice
     try:del choice
     except:pass
-    send.config(text='Start',command=pc_choose
+    send.config(text='Start',command=pc_choose)
     scr.config(text='Choose a button')
     rock.config(state=NORMAL)
     paper.config(state=NORMAL)
