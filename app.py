@@ -49,12 +49,13 @@ def reset():
     global choice
     try:del choice
     except:pass
-    send.config(text='Start',command=pc_choose)
+    send.config(text='Start',command=pc_choose
     scr.config(text='Choose a button')
     rock.config(state=NORMAL)
     paper.config(state=NORMAL)
     scissors.config(state=NORMAL)
 
+#GUI element definitions
 rock = Button(root, padx=10, pady=10, command=lambda: choose("Rock"), text='Rock')
 paper = Button(root, padx=10, pady=10, command=lambda: choose("Paper"), text='Paper')
 scissors = Button(root, padx=10, pady=10, command=lambda: choose("Scissors"), text='Scissors')
@@ -69,5 +70,6 @@ send.grid(row=2,column=0,columnspan=3)
 
 if __name__ == '__main__':
     root.mainloop()
+    #Logging function (will be made optional in the future)
     with open('./log.json','w') as f:
         f.write(str(log).replace('\'','"').replace('], ','],\n  '))
